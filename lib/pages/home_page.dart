@@ -61,8 +61,12 @@ class HomePageState extends State<HomePage>{
         floatingActionButton:Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+
+          // GestureDetector(
+          //   onTap: addNotes,
+          //   child: Icon(Icons.save),),
           FloatingActionButton.extended(onPressed:addNotes,icon:Icon(Icons.save,color: Colors.black,),label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
-          SizedBox(height: 10,),
+          SizedBox(width: 10,),
           FloatingActionButton.extended(onPressed:() {
             Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesListPage(notes: notes)
             )

@@ -7,7 +7,7 @@ class NotesListPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,),
+      appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
       body:ListView.builder(
         itemCount:notes.length,
           itemBuilder:(context,index){

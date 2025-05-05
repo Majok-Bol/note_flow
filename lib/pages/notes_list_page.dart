@@ -60,6 +60,7 @@ void showDeleteDialog(int index){
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
       body: ListView.builder(
         itemCount: widget.notes.length,
@@ -82,7 +83,7 @@ void showDeleteDialog(int index){
                       child:Text('edit')),
                   PopupMenuItem(
                     value: 'delete',
-                      child:Text('delete')),
+                          child: Text('delete')),
                 ]),
             
 

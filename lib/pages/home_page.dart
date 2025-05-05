@@ -52,6 +52,7 @@ class HomePageState extends State<HomePage>{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.grey.shade200,
         body: Container(
       padding: EdgeInsets.all(12),
       child: Column(

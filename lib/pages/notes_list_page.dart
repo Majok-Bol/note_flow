@@ -13,7 +13,11 @@ void showEditDialog(int index){
   TextEditingController editController=TextEditingController(text: widget.notes[index]);
   showDialog(context: context, builder: (context)=>AlertDialog(
     title: Text('Edit note'),
-    content: TextField(controller: editController,),
+    content:SizedBox(height: 150,child: TextField(
+      maxLines: null,
+      expands: true,
+   textAlignVertical: TextAlignVertical.top,
+      controller: editController,)),
     actions: [
       TextButton(onPressed:(){
         Navigator.pop(context);

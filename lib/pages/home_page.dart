@@ -14,13 +14,30 @@ class HomePageState extends State<HomePage>{
   // //edit notes based on index
   // int?editIndex;
   //add notes
-  void addNotes(){
-    setState(() {
-      notes.add(_itemController.text);
-      //clear text input field
-      _itemController.clear();
-    });
-  }
+   void addNotes(){
+    if(_itemController.text.isEmpty){
+      showDialog(context: context, builder:(context)=>AlertDialog(
+        title: Text('Empty Note'),
+        content: Text('Please enter some text before saving'),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+            
+          }, child:Text('OK'))
+        ],
+      ));
+    }else{
+      setState(() {
+        notes.add(_itemController.text.trim());
+        _itemController.clear();
+
+
+      });
+    }
+
+
+    }
+
   //delete notes
 
   void deleteNotes(int index){

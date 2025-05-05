@@ -1,12 +1,34 @@
 //handle home page functions
 import 'package:flutter/material.dart';
+import 'package:note_flow/pages/notes_list_page.dart';
 class HomePage extends StatefulWidget{
+  const HomePage({super.key});
   @override
   HomePageState createState()=>HomePageState();
 }
 class HomePageState extends State<HomePage>{
+  //store notes
+  List<String>notes=[];
   //controller
   final TextEditingController _itemController=TextEditingController();
+  // //edit notes based on index
+  // int?editIndex;
+  //add notes
+  void addNotes(){
+    setState(() {
+      notes.add(_itemController.text);
+      //clear text input field
+      _itemController.clear();
+    });
+  }
+  //delete notes
+
+  void deleteNotes(int index){
+    setState(() {
+      notes.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context){
     return MaterialApp(
@@ -33,15 +55,31 @@ class HomePageState extends State<HomePage>{
             ),
           ))
           //floating button to add save button
-          // delete notes
-          //view saved notes
-
         ],
       ),
     ),
-        floatingActionButton: FloatingActionButton.extended(onPressed:() {
+        floatingActionButton:Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+          FloatingActionButton.extended(onPressed:addNotes,icon:Icon(Icons.save,color: Colors.black,),label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
+          SizedBox(height: 10,),
+          FloatingActionButton.extended(onPressed:() {
+            Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesListPage(notes: notes)
+            )
+            );
 
-        },icon:Icon(Icons.save,color: Colors.black,),label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
+          },
+
+            label: Text('View Notes',style: TextStyle(color: Colors.black,fontSize: 20),),
+            icon: Icon(Icons.notes,color: Colors.black,),
+            backgroundColor: Colors.green,
+          ),
+
+
+
+
+        ],)
+
       ),
     );
 

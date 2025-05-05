@@ -11,16 +11,11 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey.shade200,
-        appBar: AppBar(title: Text('NoteFlow'),centerTitle: true,backgroundColor: Colors.grey.shade400,leading: Builder(builder:(context)=>IconButton(onPressed:() {
-          Scaffold.of(context).openDrawer();
-          
-        }, icon:Icon(Icons.menu)
-        )
-        ),
-        ),
-        drawer: Drawer(),
+        appBar: AppBar(title: Text('NoteFlow'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
         body:HomePage(),
       ),
+
+
     );
   }
 }

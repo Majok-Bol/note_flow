@@ -17,13 +17,14 @@ class HomePageState extends State<HomePage>{
    void addNotes(){
     if(_itemController.text.isEmpty){
       showDialog(context: context, builder:(context)=>AlertDialog(
-        title: Text('Empty Note'),
-        content: Text('Please enter some text before saving'),
+        title: Text('Empty Note',style: TextStyle(color: Colors.red),),
+        content: Text('Please enter some text before saving',style: TextStyle(fontSize: 15),),
         actions: [
-          TextButton(onPressed: (){
+          TextButton(
+              onPressed: (){
             Navigator.pop(context);
             
-          }, child:Text('OK'))
+          }, child:Text('OK',style: TextStyle(fontSize: 20),))
         ],
       ));
     }else{

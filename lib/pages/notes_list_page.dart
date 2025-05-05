@@ -73,8 +73,12 @@ void showDeleteDialog(int index){
               },
 
                 itemBuilder:(context)=>[
-                  PopupMenuItem(child:Text('edit')),
-                  PopupMenuItem(child:Text('delete')),
+                  PopupMenuItem(
+                    value: 'edit',
+                      child:Text('edit')),
+                  PopupMenuItem(
+                    value: 'delete',
+                      child:Text('delete')),
                 ]),
             
 

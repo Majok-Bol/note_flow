@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 class NotesListPage extends StatefulWidget {
   //store saved notes
-  final List<String>notes;
+  final List notes;
   const NotesListPage({super.key,required this.notes});
   @override
   NotesListPageState createState() => NotesListPageState();
@@ -62,7 +62,7 @@ void showDeleteDialog(int index){
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
-      body: ListView.builder(
+      body:ListView.builder(
         itemCount: widget.notes.length,
           itemBuilder:(context,index){
           return ListTile(
@@ -85,7 +85,7 @@ void showDeleteDialog(int index){
                     value: 'delete',
                           child: Text('delete')),
                 ]),
-            
+
 
           );
 

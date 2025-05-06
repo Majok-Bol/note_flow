@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:note_flow/pages/home_page.dart';
-void main(){
+import 'package:hive_flutter/hive_flutter.dart';
+void main() async {
+  // wait for hive database to connect
+  await Hive.initFlutter();
+  //open database box
+  var box=await Hive.openBox('mybox');
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget{

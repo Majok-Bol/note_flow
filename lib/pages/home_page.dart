@@ -1,14 +1,31 @@
 //handle home page functions
 import 'package:flutter/material.dart';
 import 'package:note_flow/pages/notes_list_page.dart';
+import 'package:note_flow/pages/database.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
   @override
   HomePageState createState()=>HomePageState();
 }
 class HomePageState extends State<HomePage>{
-  //store notes
-  List<String>notes=[];
+  //reference the box
+  final mybox=Hive.box('mybox');
+  //create instance of the database
+  NotesDatabase db=NotesDatabase();
+  //if first time
+  //opening the app
+  @override void initState(){
+    if(mybox.get('notesList')==null){
+      db.createInitialDatabase();
+
+    }else{
+      db.loadData();
+    }
+    super.initState();
+  }
+
+
   //controller
   final TextEditingController _itemController=TextEditingController();
 
@@ -28,8 +45,10 @@ class HomePageState extends State<HomePage>{
       ));
     }else{
       setState(() {
-        notes.add(_itemController.text.trim());
+        db.notesList.add(_itemController.text.trim());
         _itemController.clear();
+        //update the database
+        db.updateDatabase();
 
 
       });
@@ -42,7 +61,9 @@ class HomePageState extends State<HomePage>{
 
   void deleteNotes(int index){
     setState(() {
-      notes.removeAt(index);
+      db.notesList.removeAt(index);
+      //update the database
+      db.updateDatabase();
     });
   }
 
@@ -88,7 +109,7 @@ class HomePageState extends State<HomePage>{
             label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
           SizedBox(width: 10,),
           FloatingActionButton.extended(onPressed:() {
-            Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesListPage(notes: notes)
+            Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesListPage(notes:db.notesList)
             )
             );
 

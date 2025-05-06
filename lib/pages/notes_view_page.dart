@@ -11,7 +11,7 @@ class NotesViewPage extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(title: Text('View notes'),backgroundColor: Colors.grey.shade400,),
+      appBar: AppBar(title: Text(''),backgroundColor: Colors.grey.shade400,elevation: 0,),
       body: Padding(padding: EdgeInsets.all(12),
         child: SingleChildScrollView(child: Text(savedNotes,style: TextStyle(fontSize: 16),)),
       ),

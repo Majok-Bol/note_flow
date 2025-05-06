@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey.shade200,
-        appBar: AppBar(title: Text('NoteFlow'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
+        appBar: AppBar(title: Text('NoteFlow'),centerTitle: true,backgroundColor: Colors.grey.shade400,elevation: 0,),
         body:HomePage(),
       ),
 

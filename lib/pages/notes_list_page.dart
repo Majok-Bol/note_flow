@@ -62,7 +62,7 @@ void showDeleteDialog(int index){
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,backgroundColor: Colors.grey.shade400,),
+      appBar: AppBar(title: Text('Saved Notes'),centerTitle: true,backgroundColor: Colors.grey.shade400,elevation: 0,),
       body:ListView.builder(
         itemCount: widget.notes.length,
           itemBuilder:(context,index){

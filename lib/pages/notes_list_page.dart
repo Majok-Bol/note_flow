@@ -1,5 +1,6 @@
 //handles saved notes
 import 'package:flutter/material.dart';
+import 'package:note_flow/pages/notes_view_page.dart';
 class NotesListPage extends StatefulWidget {
   //store saved notes
   final List notes;
@@ -65,8 +66,34 @@ void showDeleteDialog(int index){
       body:ListView.builder(
         itemCount: widget.notes.length,
           itemBuilder:(context,index){
-          return ListTile(
-            title: Text(widget.notes[index]),
+          return GestureDetector(
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesViewPage(savedNotes:widget.notes[index])));
+            },
+              child: Container(
+
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), // Added margin for spacing between items
+                  padding: const EdgeInsets.all(16), // Unified padding
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Brighter background for contrast
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.grey.shade300), // Subtle border
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 8), // Shadow for elevation effect
+                      ),
+                    ],
+                  ),
+                child: ListTile(
+                  contentPadding: EdgeInsets.all(16),
+            title: Text(widget.notes[index],
+              maxLines:1,
+              overflow:TextOverflow.fade,
+              style: TextStyle(fontWeight: FontWeight.w200),
+            ),
             trailing: PopupMenuButton<String>(
               onSelected: (value) {
                 if(value=='edit'){
@@ -87,7 +114,7 @@ void showDeleteDialog(int index){
                 ]),
 
 
-          );
+          )));
 
       }),
 

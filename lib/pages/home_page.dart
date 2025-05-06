@@ -11,8 +11,7 @@ class HomePageState extends State<HomePage>{
   List<String>notes=[];
   //controller
   final TextEditingController _itemController=TextEditingController();
-  // //edit notes based on index
-  // int?editIndex;
+
   //add notes
    void addNotes(){
     if(_itemController.text.isEmpty){
@@ -81,10 +80,12 @@ class HomePageState extends State<HomePage>{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
 
-          // GestureDetector(
-          //   onTap: addNotes,
-          //   child: Icon(Icons.save),),
-          FloatingActionButton.extended(onPressed:addNotes,icon:Icon(Icons.save,color: Colors.black,),label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
+          FloatingActionButton.extended(
+
+            onPressed:addNotes,
+            heroTag: 'saveBtn',
+            icon:Icon(Icons.save,color: Colors.black,),
+            label: Text('save',style: TextStyle(color: Colors.black,fontSize: 20),),backgroundColor: Colors.blue,),
           SizedBox(width: 10,),
           FloatingActionButton.extended(onPressed:() {
             Navigator.push(context,MaterialPageRoute(builder:(context)=>NotesListPage(notes: notes)
